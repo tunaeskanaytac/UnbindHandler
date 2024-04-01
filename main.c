@@ -53,7 +53,6 @@ void unbind(char *pHandler) {
       strcpy(lastAddress, buffer);
     }
     if (buffer[0] == 'H') {
-      redColor();
       if (isHandler(buffer, pHandler)) {
         char address[256];
         getAddresses(lastAddress, address);
@@ -62,11 +61,10 @@ void unbind(char *pHandler) {
       }
       continue;
     }
-    printf("%s", buffer);
     resetColor();
   }
   yellowColor();
-  printf("%s", pHandler);
+  printf("Handler %s wasn't found", pHandler);
   resetColor();
 }
 
@@ -98,14 +96,8 @@ bool isHandler(char *buffer, char *targetHandler) {
   char *handler = strtok(&buffer[12], " ");
   while (*handler != '\n') {
     if (strcmp(handler, targetHandler) == 0) {
-      yellowColor();
-      printf("%s\n", handler);
-      resetColor();
       return true;
-    } else {
-      printf("%s\n", handler);
-      resetColor();
-    }
+    } 
     handler = strtok(NULL, " ");
   }
   return false;
