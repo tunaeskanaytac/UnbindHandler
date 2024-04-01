@@ -1,3 +1,8 @@
+#Jetbrains IDE configurations
+.idea/
+
+#--------------
+
 # Prerequisites
 *.d
 
